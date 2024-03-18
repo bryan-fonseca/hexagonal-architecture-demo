@@ -2,16 +2,16 @@ import { InMemoryAlarmPersistenceModule } from './persistence/in-memory/in-memor
 import { OrmAlarmPersistenceModule } from './persistence/orm/orm-persistence.module';
 
 export class AlarmsInfraestructureModule {
-  static use(driver: 'orm' | 'in-memory') {
-    const persistenceModule =
-      driver === 'orm'
-        ? OrmAlarmPersistenceModule
-        : InMemoryAlarmPersistenceModule;
+    static use(driver: 'orm' | 'in-memory') {
+        const persistenceModule =
+            driver === 'orm'
+                ? OrmAlarmPersistenceModule
+                : InMemoryAlarmPersistenceModule;
 
-    return {
-      module: AlarmsInfraestructureModule,
-      imports: [persistenceModule],
-      exports: [persistenceModule],
-    };
-  }
+        return {
+            module: AlarmsInfraestructureModule,
+            imports: [persistenceModule],
+            exports: [persistenceModule],
+        };
+    }
 }

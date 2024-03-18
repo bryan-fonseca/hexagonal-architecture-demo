@@ -4,25 +4,25 @@ import { ApplicationBootstrapOptions } from 'src/common/interfaces/application-b
 
 @Module({})
 export class CoreModule {
-  static forRoot(options: ApplicationBootstrapOptions) {
-    const imports =
-      options.driver === 'orm'
-        ? [
-            TypeOrmModule.forRoot({
-              type: 'postgres',
-              host: 'localhost',
-              port: 5432,
-              password: 'pass123',
-              username: 'postgres',
-              autoLoadEntities: true,
-              synchronize: true,
-            }),
-          ]
-        : [];
+    static forRoot(options: ApplicationBootstrapOptions) {
+        const imports =
+            options.driver === 'orm'
+                ? [
+                      TypeOrmModule.forRoot({
+                          type: 'postgres',
+                          host: 'localhost',
+                          port: 5432,
+                          password: 'pass123',
+                          username: 'postgres',
+                          autoLoadEntities: true,
+                          synchronize: true,
+                      }),
+                  ]
+                : [];
 
-    return {
-      module: CoreModule,
-      imports,
-    };
-  }
+        return {
+            module: CoreModule,
+            imports,
+        };
+    }
 }

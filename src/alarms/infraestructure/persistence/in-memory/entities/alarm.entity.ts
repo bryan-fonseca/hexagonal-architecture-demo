@@ -1,5 +1,5 @@
 export class AlarmEntity {
-  id: string;
-  name: string;
-  severity: string;
+    id: string;
+    name: string;
+    severity: string;
 }

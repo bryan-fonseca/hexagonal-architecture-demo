@@ -5,20 +5,20 @@ import { AlarmFactory } from '../domain/factories/alarm.factory';
 
 @Injectable()
 export class AlarmsService {
-  constructor(
-    private readonly alarmRepository: AlarmRepository,
-    private readonly alarmFactory: AlarmFactory,
-  ) {}
+    constructor(
+        private readonly alarmRepository: AlarmRepository,
+        private readonly alarmFactory: AlarmFactory,
+    ) {}
 
-  create(createAlarmCommand: CreateAlarmCommand) {
-    const alarm = this.alarmFactory.create(
-      createAlarmCommand.name,
-      createAlarmCommand.severity,
-    );
-    return this.alarmRepository.save(alarm);
-  }
+    create(createAlarmCommand: CreateAlarmCommand) {
+        const alarm = this.alarmFactory.create(
+            createAlarmCommand.name,
+            createAlarmCommand.severity,
+        );
+        return this.alarmRepository.save(alarm);
+    }
 
-  findAll() {
-    return this.alarmRepository.findAll();
-  }
+    findAll() {
+        return this.alarmRepository.findAll();
+    }
 }

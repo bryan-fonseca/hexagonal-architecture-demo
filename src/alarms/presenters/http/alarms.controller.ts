@@ -6,17 +6,20 @@ import { CreateAlarmCommand } from 'src/alarms/application/command/create-alarm.
 
 @Controller('alarms')
 export class AlarmsController {
-  constructor(private readonly alarmsService: AlarmsService) {}
+    constructor(private readonly alarmsService: AlarmsService) {}
 
-  @Post()
-  create(@Body() createAlarmDto: CreateAlarmDto) {
-    return this.alarmsService.create(
-      new CreateAlarmCommand(createAlarmDto.name, createAlarmDto.severity),
-    );
-  }
+    @Post()
+    create(@Body() createAlarmDto: CreateAlarmDto) {
+        return this.alarmsService.create(
+            new CreateAlarmCommand(
+                createAlarmDto.name,
+                createAlarmDto.severity,
+            ),
+        );
+    }
 
-  @Get()
-  findAll() {
-    return this.alarmsService.findAll();
-  }
+    @Get()
+    findAll() {
+        return this.alarmsService.findAll();
+    }
 }

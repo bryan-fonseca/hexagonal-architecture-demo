@@ -5,13 +5,13 @@ import { AlarmRepository } from 'src/alarms/application/ports/alarm.repository';
 import { OrmAlarmRepository } from './repositories/alarm.repository';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([AlarmEntity])],
-  providers: [
-    {
-      provide: AlarmRepository, // Port
-      useClass: OrmAlarmRepository, // Adapter
-    },
-  ],
-  exports: [AlarmRepository],
+    imports: [TypeOrmModule.forFeature([AlarmEntity])],
+    providers: [
+        {
+            provide: AlarmRepository, // Port
+            useClass: OrmAlarmRepository, // Adapter
+        },
+    ],
+    exports: [AlarmRepository],
 })
 export class OrmAlarmPersistenceModule {}

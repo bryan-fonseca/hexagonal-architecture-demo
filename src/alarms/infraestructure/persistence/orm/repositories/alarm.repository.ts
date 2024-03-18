@@ -8,20 +8,20 @@ import { AlarmMapper } from '../mappers/alarm.mapper';
 // TypeORM returns the objects of the Entity type
 
 export class OrmAlarmRepository implements AlarmRepository {
-  constructor(
-    @InjectRepository(AlarmEntity)
-    private readonly alarmRepository: Repository<AlarmEntity>,
-  ) {}
+    constructor(
+        @InjectRepository(AlarmEntity)
+        private readonly alarmRepository: Repository<AlarmEntity>,
+    ) {}
 
-  async findAll(): Promise<Alarm[]> {
-    const entities = await this.alarmRepository.find();
-    return entities.map((entity) => AlarmMapper.toDomain(entity));
-  }
+    async findAll(): Promise<Alarm[]> {
+        const entities = await this.alarmRepository.find();
+        return entities.map((entity) => AlarmMapper.toDomain(entity));
+    }
 
-  async save(alarm: Alarm): Promise<Alarm> {
-    const savedEntity = await this.alarmRepository.save(
-      AlarmMapper.toPersistence(alarm),
-    );
-    return AlarmMapper.toDomain(savedEntity);
-  }
+    async save(alarm: Alarm): Promise<Alarm> {
+        const savedEntity = await this.alarmRepository.save(
+            AlarmMapper.toPersistence(alarm),
+        );
+        return AlarmMapper.toDomain(savedEntity);
+    }
 }
